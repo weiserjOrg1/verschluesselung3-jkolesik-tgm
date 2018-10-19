@@ -6,22 +6,22 @@ public class ShiftCipher extends MonoAlphabeticCipher{
 	 * @param i übernimmt, um wie viele Stellen die Buchstaben verschoben werden sollen
 	 */
 	public ShiftCipher(int i) {
-		cycle(i);
+		shift(i);
 	}
 	/**
-	 * die SetterMethode f�r den Shift
-	 * @param i �bernimmt, um wie viele Stellen die Buchstaben verschoben werden sollen
+	 * die SetterMethode für den Shift
+	 * @param i übernimmt, um wie viele Stellen die Buchstaben verschoben werden sollen
 	 */
 	public void setShiftValue(int i) {
 		if(i != 0) {
-			cycle(i);
+			shift(i);
 		}
 	}
 	/**
 	 * Diese Methode shiftet das Alphabet um soviele Stellen, wie es vom Benutzer eingegeben wurde
-	 * @param i �bernimmt, um wie viele Stellen die Buchstaben verschoben werden sollen
+	 * @param i übernimmt, um wie viele Stellen die Buchstaben verschoben werden sollen
 	 */
-	private void cycle(int i){
+	private void shift(int i){
 		char[] alph = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t',
 					   'u','v','w','x','y','z'};
 		char[] newAlph = new char[alph.length];

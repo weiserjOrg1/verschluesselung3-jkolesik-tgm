@@ -54,10 +54,10 @@ public class MonoAlphabeticCipher implements Cipher{
 	}
 	
 	/**
-	 * hier wird �berpr�ft, ob das zu setzende secretAlphabet alle (und nur) Buchstaben des "normalen"
+	 * hier wird überprüft, ob das zu setzende secretAlphabet alle (und nur) Buchstaben des "normalen"
 	 * Alphabets enthalten
-	 * @param secretAlphabet �bernimmt das zu setzende secretAlpahet
-	 * @return gibt false zur�ck, wenn das secretAlphabet nicht den Regeln entspricht, true wenn schon.
+	 * @param secretAlphabet übernimmt das zu setzende secretAlpahet
+	 * @return gibt false zurück, wenn das secretAlphabet nicht den Regeln entspricht, true wenn schon.
 	 */
 	private boolean containsAlphabet(String secretAlphabet) {
 		String alph = "abcdefghijklmnopqrstuvwxyz";

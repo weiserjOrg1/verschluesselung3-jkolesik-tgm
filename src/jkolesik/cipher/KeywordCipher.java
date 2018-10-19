@@ -1,13 +1,25 @@
 package jkolesik.cipher;
 
 import javax.swing.JOptionPane;
-
+/**
+ * Diese Klasse verschlüsselt auf Basis eines eingegebenen Schlüsselworts.
+ * @author jkolesik
+ *
+ */
 public class KeywordCipher extends MonoAlphabeticCipher{
-	private String keyword;
+	private String keyword; //Basis
+	/**
+	 * Der überladene Konstruktor
+	 * @param d
+	 */
 	public KeywordCipher(String d) {
 		this.setKeyword(d);
 	}
-	
+	/**
+	 * Diese Methode übernimmt das Keyword, prüft ob es zulässig ist und generiert daraus das Geheimalphabet.
+	 * @param d Keyword
+	 * @throws NotSuitableException
+	 */
 	public void setKeyword(String d) throws NotSuitableException {
 		for (int i = 0; i<d.length();i++) {
 			int pos = i;
