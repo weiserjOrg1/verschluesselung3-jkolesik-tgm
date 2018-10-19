@@ -14,6 +14,9 @@ public class CipherView extends JFrame {
 	private Container EnDe;
 	private Container EnDeT;
 	private Container newA;
+	private Container transpositionCipher;
+	private JTextField transC;
+	private JButton UseTransC;
 	private JButton en;
 	private JButton de;
 	private CipherModel Model;
@@ -29,11 +32,11 @@ public class CipherView extends JFrame {
 		this.Model = m;
 		this.Controller = c;
 		this.Panel = new CipherPanel(this, this.Model);
-		this.setLayout(new GridLayout(4,2));
+		this.setLayout(new GridLayout(5,2));
 		this.EnDeT = new Container();
 		this.EnDeT.setLayout(new GridLayout(2,1));
-		this.tTexten = new JTextField("entschl�sselter Text eingeben");
-		this.tTextde = new JTextField("verschl�sselter Text eingeben");
+		this.tTexten = new JTextField("entschlüsselter Text eingeben");
+		this.tTextde = new JTextField("verschlüsselter Text eingeben");
 		this.EnDeT.add(this.tTexten);
 		this.EnDeT.add(this.tTextde);
 		this.add(this.EnDeT);
@@ -54,8 +57,8 @@ public class CipherView extends JFrame {
 		this.add(this.SetA);
 		this.EnDe = new Container();
 		this.EnDe.setLayout(new GridLayout(2,1));
-		this.en = new JButton("Verschl�sseln");
-		this.de = new JButton("Entschl�sseln");
+		this.en = new JButton("Verschlüsseln");
+		this.de = new JButton("Entschlüsseln");
 		this.EnDe.add(this.en);
 		this.EnDe.add(this.de);
 		this.add(this.EnDe);
@@ -71,6 +74,14 @@ public class CipherView extends JFrame {
 		this.de.addActionListener(this.Controller);
 		this.setAlphabet.addActionListener(this.Controller);
 		this.setShAlphabet.addActionListener(this.Controller);
+		this.transpositionCipher = new Container();
+		this.transpositionCipher.setLayout(new GridLayout(2,1));
+		this.transC = new JTextField("Geben Sie ein TranspositionsLevel ein");
+		this.UseTransC = new JButton("Alphabet mit Transpositionslevel erstellen!");
+		this.transpositionCipher.add(this.transC);
+		this.transpositionCipher.add(this.UseTransC);
+		this.add(this.transpositionCipher);
+		this.UseTransC.addActionListener(this.Controller);
 		this.setSize(500, 500);
 		this.setVisible(true);
 	}
@@ -88,6 +99,10 @@ public class CipherView extends JFrame {
 	}
 	public boolean klickUKW(ActionEvent e) {
 		if (e.getSource() == this.UseKeyW) return true;
+		return false;
+	}
+	public boolean klickUseTransC(ActionEvent e) {
+		if (e.getSource() == this.UseTransC) return true;
 		return false;
 	}
 	public void setText() {
@@ -111,7 +126,7 @@ public class CipherView extends JFrame {
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "Geben Sie eine korrekte Zahl ein!");
 		}
-		this.Model.settransLevel(i);
+		this.Model.setVer(i);
 	}
 	public void setKW() {
 		this.Model.setKeyword(this.keyWord.getText());
