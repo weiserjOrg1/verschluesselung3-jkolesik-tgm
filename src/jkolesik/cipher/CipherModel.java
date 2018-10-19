@@ -1,53 +1,119 @@
 package jkolesik.cipher;
-
+/**
+ * Diese Klasse stellt das Model nach dem MVC-Konzept dar und kümmert sich um die notwendigen Daten.
+ * @author jkolesik
+ * @version 19-10-2018
+ */
 public class CipherModel {
 	private String etext;
 	private String dtext;
 	private String alphabet;
 	private int Ver;
-	public String keyWord;
+	private String keyWord;
+	private int level;
+	/**
+	 * Das ist der implementierte Konstruktor.
+	 */
 	public CipherModel() {
 		this.etext = "";
 		this.dtext = "";
 		this.alphabet = "";
 		this.keyWord = "";
 		this.Ver = 0;
+		this.level = 0;
 	}
+	/**
+	 * Diese Methode liefert den verschlüsselte Text zurück.
+	 * @return der verschlüsselte text
+	 */
 	public String getEtext() {
 		return etext;
 	}
+	/**
+	 * Diese Methode setzt den verschlüsselten Text.
+	 * @param etext der verschlüsselte Text
+	 */
 	public void setEtext(String etext) {
 		this.etext = etext;
 	}
+	/**
+	 * Diese Methode liefert den entschlüsselten Text
+	 * @return
+	 */
 	public String getDtext() {
 		return dtext;
 	}
+	/**
+	 * Diese Methode settet den zu entschlüsselten Text
+	 * @param dtext
+	 */
 	public void setDtext(String dtext) {
 		this.dtext = dtext;
 	}
+	/**
+	 * Diese Methode returnt das Geheimalphabet.
+	 * @return
+	 */
 	public String getAlphabet() {
 		return alphabet;
 	}
+	/**
+	 * Diese Methode settet das Geheimalphabet.
+	 * @param alphabet das Alphabet was gesettet wird
+	 */
 	public void setAlphabet(String alphabet) {
 		this.alphabet = alphabet;
 	}
+	/**
+	 * Diese Methode returnt den ShiftValue.
+	 * @return
+	 */
 	public int getVer() {
 		return Ver;
 	}
+	/**
+	 * Diese Methode setzt den ShiftValue.
+	 * @param ver der ShiftValue
+	 */
 	public void setVer(int ver) {
 		Ver = ver;
 	}
+	/**
+	 * Diese Methode returnt das Keyword, welches das Geheimalphabet erzeugt.
+	 * @return
+	 */
 	public String getKeyWord() {
 		return this.keyWord;
 	}
+	/**
+	 * Diese Methode settet das Keyword, welches zur Bildung eines neuen Geheimalphabets benutzt wird.
+	 * @param KeyWord
+	 */
 	public void setKeyword(String KeyWord) {
 		this.keyWord = KeyWord;
 	}
+	/**
+	 * Diese Methode setzt alle Daten auf Ausgangszustand zurück.
+	 */
 	public void refresh() {
 		this.etext = "";
 		this.dtext = "";
 		this.alphabet = "";
 		this.keyWord = "";
 		this.Ver = 0;
+	}
+	/**
+	 * Diese Methode settet das Transposition-Level.
+	 * @param i das Level
+	 */
+	public void setLevel(int i) {
+		this.level = i;
+	}
+	/**
+	 * Diese Methode returnt das aktuelle Level der Transposition.
+	 * @return
+	 */
+	public int getLevel() {
+		return this.level;
 	}
 }
