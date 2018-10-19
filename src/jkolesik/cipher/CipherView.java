@@ -114,7 +114,7 @@ public class CipherView extends JFrame {
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "Geben Sie eine korrekte Zahl ein!");
 		}
-		this.Model.setVer(i);
+		this.Model.settransLevel(i);
 	}
 	public void setKW() {
 		this.Model.setKeyword(this.keyWord.getText());

@@ -4,14 +4,14 @@ public class CipherModel {
 	private String etext;
 	private String dtext;
 	private String alphabet;
-	private int Ver;
+	private int transLevel;
 	public String keyWord;
 	public CipherModel() {
 		this.etext = "";
 		this.dtext = "";
 		this.alphabet = "";
 		this.keyWord = "";
-		this.Ver = 0;
+		this.transLevel = 0;
 	}
 	public String getEtext() {
 		return etext;
@@ -31,11 +31,11 @@ public class CipherModel {
 	public void setAlphabet(String alphabet) {
 		this.alphabet = alphabet;
 	}
-	public int getVer() {
-		return Ver;
+	public int gettransLevel() {
+		return transLevel;
 	}
-	public void setVer(int ver) {
-		Ver = ver;
+	public void settransLevel(int transLevel) {
+		transLevel = transLevel;
 	}
 	public String getKeyWord() {
 		return this.keyWord;
@@ -48,6 +48,6 @@ public class CipherModel {
 		this.dtext = "";
 		this.alphabet = "";
 		this.keyWord = "";
-		this.Ver = 0;
+		this.transLevel = 0;
 	}
 }

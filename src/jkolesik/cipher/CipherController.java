@@ -36,7 +36,7 @@ public class CipherController implements ActionListener {
 			this.Model.refresh();
 			this.View.refresh();
 			this.View.setWert();
-			this.sh1 = new ShiftCipher(this.Model.getVer());
+			this.sh1 = new ShiftCipher(this.Model.gettransLevel());
 			this.shT = true; this.alphT = false; this.kCT = false;
 		}
 		if (this.View.klickUKW(e)) {
