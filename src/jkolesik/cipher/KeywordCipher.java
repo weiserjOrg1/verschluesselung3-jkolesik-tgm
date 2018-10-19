@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 public class KeywordCipher extends MonoAlphabeticCipher{
 	private String keyword;
 	public KeywordCipher(String d) {
-		this.keyword = d;
+		this.setKeyword(d);
 	}
 	
 	public void setKeyword(String d) throws NotSuitableException {

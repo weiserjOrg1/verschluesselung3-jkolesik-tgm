@@ -4,7 +4,7 @@ public class TranspositionCipher implements Cipher{
 	private int level;
 	private String text;
 	public TranspositionCipher(int level) {
-		this.level = level;
+		this.setTranspositionLevel(level);
 	}
 	
 	public void setTranspositionLevel(int level) throws NotSuitableException {
