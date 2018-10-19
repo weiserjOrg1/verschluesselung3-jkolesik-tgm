@@ -90,9 +90,6 @@ public class CipherView extends JFrame {
 		if (e.getSource() == this.UseKeyW) return true;
 		return false;
 	}
-	public void refresh() {
-		this.repaint();
-	}
 	public void setText() {
 		this.Model.setAlphabet(this.tAlphabet.getText());
 	}
@@ -118,6 +115,8 @@ public class CipherView extends JFrame {
 	}
 	public void setKW() {
 		this.Model.setKeyword(this.keyWord.getText());
-		
+	}
+	public void refresh() {
+		this.repaint();
 	}
 }
