@@ -5,7 +5,7 @@ package jkolesik.cipher;
  * @version 19-10-2018
  */
 public class CipherModel {
-	private String etext;
+	private String entText;
 	private String dtext;
 	private String alphabet;
 	private int Ver;
@@ -15,7 +15,7 @@ public class CipherModel {
 	 * Das ist der implementierte Konstruktor.
 	 */
 	public CipherModel() {
-		this.etext = "";
+		this.entText = "";
 		this.dtext = "";
 		this.alphabet = "";
 		this.keyWord = "";
@@ -26,15 +26,15 @@ public class CipherModel {
 	 * Diese Methode liefert den verschlüsselte Text zurück.
 	 * @return der verschlüsselte text
 	 */
-	public String getEtext() {
-		return etext;
+	public String getentText() {
+		return entText;
 	}
 	/**
 	 * Diese Methode setzt den verschlüsselten Text.
-	 * @param etext der verschlüsselte Text
+	 * @param entText der verschlüsselte Text
 	 */
-	public void setEtext(String etext) {
-		this.etext = etext;
+	public void setentText(String entText) {
+		this.entText = entText;
 	}
 	/**
 	 * Diese Methode liefert den entschlüsselten Text
@@ -96,7 +96,7 @@ public class CipherModel {
 	 * Diese Methode setzt alle Daten auf Ausgangszustand zurück.
 	 */
 	public void refresh() {
-		this.etext = "";
+		this.entText = "";
 		this.dtext = "";
 		this.alphabet = "";
 		this.keyWord = "";

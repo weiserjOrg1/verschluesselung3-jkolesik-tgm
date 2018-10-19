@@ -72,10 +72,10 @@ public class CipherController implements ActionListener {
 		}
 		if(this.View.klickEn(e)) {
 			this.View.setEn();
-			if (this.alphT) this.Model.setEtext(this.s1.encrypt(this.Model.getEtext()));
-			if (this.shT) this.Model.setEtext(this.sh1.encrypt(this.Model.getEtext()));
-			if (this.kCT) this.Model.setEtext(this.kC.encrypt(this.Model.getEtext()));
-			if (this.tCT) this.Model.setEtext(this.tC.encrypt(this.Model.getEtext()));
+			if (this.alphT) this.Model.setentText(this.s1.encrypt(this.Model.getentText()));
+			if (this.shT) this.Model.setentText(this.sh1.encrypt(this.Model.getentText()));
+			if (this.kCT) this.Model.setentText(this.kC.encrypt(this.Model.getentText()));
+			if (this.tCT) this.Model.setentText(this.tC.encrypt(this.Model.getentText()));
 			this.View.refresh();
 		}
 		if (this.View.klickUseTransC(e)) {

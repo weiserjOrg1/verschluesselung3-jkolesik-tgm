@@ -4,13 +4,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 import javax.swing.*;
-
+/**
+ * Diese Klasse stellt die Swing-Elemente der GUI dar.
+ * @author jkolesik
+ * @version 19-10-2018
+ */
 public class CipherView extends JFrame {
-	private JTextField tAlphabet;
-	private JTextField tTexten;
-	private JTextField tTextde;
-	private JTextField iShift;
-	private JButton setAlphabet;
+	private JTextField tAlphabet; //Textfeld zum Eingeben des Alphabets
+	private JTextField tTexten; //Textfeld zum Eingeben des zu verschlüsselnten Texts
+	private JTextField tTextde; //Textfeld zum Eingeben des zu entschlüsselnten Texts
+	private JTextField iShift; //Textfeld zum Eingeben des ShiftValue
+	private JButton setAlphabet; //Button zum setten des Alphabets
 	private Container EnDe;
 	private Container EnDeT;
 	private Container newA;
@@ -27,6 +31,12 @@ public class CipherView extends JFrame {
 	private Container kCipher;
 	private JTextField keyWord;
 	private JButton UseKeyW;
+	
+	/**
+	 * Das ist der überladene Konstruktor
+	 * @param m Ein Objekt vom Typ CipherModel
+	 * @param c Ein Objekt vom Typ CipherController
+	 */
 	public CipherView(CipherModel m, CipherController c) {
 		this.setTitle("Cipher");
 		this.Model = m;
@@ -77,47 +87,64 @@ public class CipherView extends JFrame {
 		this.transpositionCipher = new Container();
 		this.transpositionCipher.setLayout(new GridLayout(2,1));
 		this.transC = new JTextField("Geben Sie ein TranspositionsLevel ein");
-		this.UseTransC = new JButton("Alphabet mit Transpositionslevel erstellen!");
+		this.UseTransC = new JButton("Alphabet mit Transposition erstellen!");
 		this.transpositionCipher.add(this.transC);
 		this.transpositionCipher.add(this.UseTransC);
-		this.add(this.transpositionCipher);
 		this.UseTransC.addActionListener(this.Controller);
+		this.add(this.transpositionCipher);
 		this.setSize(500, 500);
 		this.setVisible(true);
 	}
+	/**
+	 * Diese Methode prüft ob der betreffende Button der Eventauslöser war
+	 * @param e Ein Objekt vom Typ ActionEvent
+	 * @return Je nachdem ob Button Eventauslöser war
+	 */
+	
 	public boolean klickSA(ActionEvent e) {
 		if (e.getSource() == this.setAlphabet) return true;
 		return false;
 	}
+	/**
+	 * Diese Methode prüft ob der betreffende Button der Eventauslöser war
+	 * @param e Ein Objekt vom Typ ActionEvent
+	 * @return Je nachdem ob Button Eventauslöser war
+	 */
+	
 	public boolean klickEn(ActionEvent e) {
 		if (e.getSource() == this.en) return true;
 		return false;
 	}
+	/**
+	 * Diese Methode prüft ob der betreffende Button der Eventauslöser war
+	 * @param e Ein Objekt vom Typ ActionEvent
+	 * @return Je nachdem ob Button Eventauslöser war
+	 */
 	public boolean klickDe(ActionEvent e) {
 		if (e.getSource() == this.de) return true;
 		return false;
 	}
+	/**
+	 * Diese Methode prüft ob der betreffende Button der Eventauslöser war
+	 * @param e Ein Objekt vom Typ ActionEvent
+	 * @return Je nachdem ob Button Eventauslöser war
+	 */
 	public boolean klickUKW(ActionEvent e) {
 		if (e.getSource() == this.UseKeyW) return true;
 		return false;
 	}
+	/**
+	 * Diese Methode prüft ob der betreffende Button der Eventauslöser war
+	 * @param e Ein Objekt vom Typ ActionEvent
+	 * @return Je nachdem ob Button Eventauslöser war
+	 */
 	public boolean klickUseTransC(ActionEvent e) {
 		if (e.getSource() == this.UseTransC) return true;
 		return false;
 	}
-	public void setText() {
-		this.Model.setAlphabet(this.tAlphabet.getText());
-	}
-	public void setDe() {
-		this.Model.setDtext(this.tTextde.getText());
-	}
-	public void setEn() {
-		this.Model.setEtext(this.tTexten.getText());
-	}
-	public boolean klickShA(ActionEvent e) {
-		if (e.getSource() == this.setShAlphabet) return true;
-		return false;
-	}
+	/**
+	 * Diese Methode setzt den Shift-Wert im Model.
+	 */
 	public void setWert() {
 		String s = this.iShift.getText();
 		int i = 0;
@@ -128,10 +155,57 @@ public class CipherView extends JFrame {
 		}
 		this.Model.setVer(i);
 	}
+	/**
+	 * Diese Methode setzt das Keyword-Attribut im Model.
+	 */
 	public void setKW() {
 		this.Model.setKeyword(this.keyWord.getText());
 	}
+	/**
+	 * Diese Methode setzt das TranspositionsLevel im Model.
+	 */
+	public void setLevel() {
+		String s = this.transC.getText();
+		int i = 0;
+		try {
+			i = Integer.parseInt(s);
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Geben Sie eine korrekte Zahl ein!");
+		}
+		this.Model.setLevel(i);
+	}
+	/**
+	 * Diese Methode repaintet die GUI-Elemente.
+	 */
 	public void refresh() {
 		this.repaint();
 	}
+	/**
+	 * Diese Methode setzt das Text-Attribut im Model.
+	 */
+	public void setText() {
+		this.Model.setAlphabet(this.tAlphabet.getText());
+	}
+	/**
+	 * Diese Methode setzt das zu entschlüsselte Text-Attribut im Model.
+	 */
+	public void setDe() {
+		this.Model.setDtext(this.tTextde.getText());
+	}
+	/**
+	 * Diese Methode setzt das zu verschlüsselte Text-Attribut im Model.
+	 */
+	public void setEn() {
+		this.Model.setentText(this.tTexten.getText());
+	}
+	/**
+	 * Diese Methode prüft ob der betreffende Button der Eventauslöser war
+	 * @param e Ein Objekt vom Typ ActionEvent
+	 * @return Je nachdem ob Button Eventauslöser war
+	 */
+	public boolean klickShA(ActionEvent e) {
+		if (e.getSource() == this.setShAlphabet) return true;
+		return false;
+	}
+	
 }
