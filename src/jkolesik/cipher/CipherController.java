@@ -35,15 +35,15 @@ public class CipherController implements ActionListener {
 	 * Das ist die zu implementierende Methode des Actionlisteners und sie verarbeitet die Benutzereingaben.
 	 */
 	public void actionPerformed(ActionEvent e) {
-		if(this.View.klickSA(e)) {
+		if(this.View.buttonSetextFieldAlphabet(e)) {
 			this.View.repaint();
 			this.Model.refresh();
 			this.View.refresh();
 			this.View.setText();
-			this.s1 = new SubstitutionCipher(this.Model.getAlphabet());
+			this.s1 = new SubstitutionCipher(this.Model.getextFieldAlphabet());
 			this.alphT = true; this.shT = false; this.kCT = false; this.tCT = false;
 		}
-		if (this.View.klickShA(e)) {
+		if (this.View.buttonShift(e)) {
 			this.View.repaint();
 			this.Model.refresh();
 			this.View.refresh();
@@ -52,7 +52,7 @@ public class CipherController implements ActionListener {
 			this.shT = true; this.alphT = false; this.kCT = false; this.tCT = false;
 		}
 		
-		if (this.View.klickUKW(e)) {
+		if (this.View.buttonKeyword(e)) {
 			this.View.repaint();
 			this.Model.refresh();
 			this.View.refresh();
@@ -61,16 +61,16 @@ public class CipherController implements ActionListener {
 			this.kCT = true; this.alphT = false; this.shT = false; this.tCT = false;
 		}
 		
-		if(this.View.klickDe(e)) {
+		if(this.View.buttonDecrypt(e)) {
 			this.View.setDe();
-			if (this.alphT) this.Model.setDtext(this.s1.decrypt(this.Model.getDtext()));
-			if (this.shT) this.Model.setDtext(this.sh1.decrypt(this.Model.getDtext()));
-			if (this.kCT) this.Model.setDtext(this.kC.decrypt(this.Model.getDtext()));
-			if (this.tCT) this.Model.setDtext(this.tC.decrypt(this.Model.getDtext()));
+			if (this.alphT) this.Model.setdecText(this.s1.decrypt(this.Model.getdecText()));
+			if (this.shT) this.Model.setdecText(this.sh1.decrypt(this.Model.getdecText()));
+			if (this.kCT) this.Model.setdecText(this.kC.decrypt(this.Model.getdecText()));
+			if (this.tCT) this.Model.setdecText(this.tC.decrypt(this.Model.getdecText()));
 
 			this.View.refresh();
 		}
-		if(this.View.klickEn(e)) {
+		if(this.View.buttonEncrypt(e)) {
 			this.View.setEn();
 			if (this.alphT) this.Model.setentText(this.s1.encrypt(this.Model.getentText()));
 			if (this.shT) this.Model.setentText(this.sh1.encrypt(this.Model.getentText()));
@@ -78,7 +78,7 @@ public class CipherController implements ActionListener {
 			if (this.tCT) this.Model.setentText(this.tC.encrypt(this.Model.getentText()));
 			this.View.refresh();
 		}
-		if (this.View.klickUseTransC(e)) {
+		if (this.View.buttonTransposition(e)) {
 			this.View.repaint();
 			this.Model.refresh();
 			this.View.refresh();

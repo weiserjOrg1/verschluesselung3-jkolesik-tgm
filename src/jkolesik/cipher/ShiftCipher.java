@@ -12,7 +12,7 @@ public class ShiftCipher extends MonoAlphabeticCipher{
 	 * die SetterMethode für den Shift
 	 * @param i übernimmt, um wie viele Stellen die Buchstaben verschoben werden sollen
 	 */
-	public void setShiftValue(int i) {
+	public void setextFieldShiftValueValue(int i) {
 		if(i != 0) {
 			shift(i);
 		}

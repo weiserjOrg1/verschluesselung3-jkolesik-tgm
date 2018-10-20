@@ -6,7 +6,7 @@ package jkolesik.cipher;
  */
 public class CipherModel {
 	private String entText;
-	private String dtext;
+	private String decText;
 	private String alphabet;
 	private int Ver;
 	private String keyWord;
@@ -16,7 +16,7 @@ public class CipherModel {
 	 */
 	public CipherModel() {
 		this.entText = "";
-		this.dtext = "";
+		this.decText = "";
 		this.alphabet = "";
 		this.keyWord = "";
 		this.Ver = 0;
@@ -40,28 +40,28 @@ public class CipherModel {
 	 * Diese Methode liefert den entschlüsselten Text
 	 * @return
 	 */
-	public String getDtext() {
-		return dtext;
+	public String getdecText() {
+		return decText;
 	}
 	/**
 	 * Diese Methode settet den zu entschlüsselten Text
-	 * @param dtext
+	 * @param decText
 	 */
-	public void setDtext(String dtext) {
-		this.dtext = dtext;
+	public void setdecText(String decText) {
+		this.decText = decText;
 	}
 	/**
 	 * Diese Methode returnt das Geheimalphabet.
 	 * @return
 	 */
-	public String getAlphabet() {
+	public String getextFieldAlphabet() {
 		return alphabet;
 	}
 	/**
 	 * Diese Methode settet das Geheimalphabet.
 	 * @param alphabet das Alphabet was gesettet wird
 	 */
-	public void setAlphabet(String alphabet) {
+	public void setextFieldAlphabet(String alphabet) {
 		this.alphabet = alphabet;
 	}
 	/**
@@ -97,7 +97,7 @@ public class CipherModel {
 	 */
 	public void refresh() {
 		this.entText = "";
-		this.dtext = "";
+		this.decText = "";
 		this.alphabet = "";
 		this.keyWord = "";
 		this.Ver = 0;

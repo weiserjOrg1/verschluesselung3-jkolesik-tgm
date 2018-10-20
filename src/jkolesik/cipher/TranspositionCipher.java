@@ -1,12 +1,24 @@
 package jkolesik.cipher;
-
+/**
+ * Diese Klasse implementiert einen Cipher nach dem Transpositionsprinzip.
+ * @author jkolesik
+ * @version 13-10-2018
+ */
 public class TranspositionCipher implements Cipher{
 	private int level;
 	private String text;
-	public TranspositionCipher(int level) {
-		this.setTranspositionLevel(level);
+	/**
+	 * Der implementierte Konstruktor
+	 * @param level1 Transpositionslevel
+	 */
+	public TranspositionCipher(int level1) {
+		this.level = level1;
 	}
-	
+	/**
+	 * Diese Methode settet das Transpositionslevel.
+	 * @param level Transpositionslevel
+	 * @throws NotSuitableException
+	 */
 	public void setTranspositionLevel(int level) throws NotSuitableException {
 		if (this.level >= 1 && this.level <= 5) {
 		this.level = level;
@@ -15,8 +27,13 @@ public class TranspositionCipher implements Cipher{
 			throw suit;
 		}
 	}
-
+	
 	@Override
+	/**
+	 * Diese Methode verschlüsselt nach dem Transpositionsprinzip.
+	 * @param text Ist der Text der verschlüsselt werden soll
+	 * @return Gibt den verschlüsselten Text zurück
+	 */
 	public String encrypt(String text) {
 		String text1 = text.replaceAll("\\s", "");
 		char[][] rail = new char[this.level] [text1.length()]; //Erzeugt die benötigte Matrix
@@ -60,6 +77,11 @@ public class TranspositionCipher implements Cipher{
 	}
 
 	@Override
+	/**
+	 * Diese Methode entschlüsselt nach dem Transpositionsprinzip.
+	 * @param text Ist der Text der entschlüsselt werden soll
+	 * @return Gibt den entschlüsselten Text zurück
+	 */
 	public String decrypt(String text) {
 		String text1 = text.replaceAll("\\s", "");
 char[][] rail = new char[this.level] [text1.length()]; //Erzeugt die benötigte Matrix
@@ -133,10 +155,17 @@ for (int i = 0; i<this.level;i++) {
 		this.text = temp;
 		return temp;
 	}
-	
+	/**
+	 * Diese Methode returnt den Inhalt.
+	 * @return Inhalt
+	 */
 	public String getInhalt() {
 		return this.text;
 	}
+	/**
+	 * Diese Methode setzt den Inhalt.
+	 * @param t Inhalt
+	 */
 	public void setInhalt(String t) {
 		this.text = t;
 	}

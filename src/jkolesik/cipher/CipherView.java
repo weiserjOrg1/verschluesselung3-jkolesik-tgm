@@ -10,59 +10,58 @@ import javax.swing.*;
  * @version 19-10-2018
  */
 public class CipherView extends JFrame {
-	private JTextField tAlphabet; //Textfeld zum Eingeben des Alphabets
-	private JTextField tTexten; //Textfeld zum Eingeben des zu verschlüsselnten Texts
-	private JTextField tTextde; //Textfeld zum Eingeben des zu entschlüsselnten Texts
-	private JTextField iShift; //Textfeld zum Eingeben des ShiftValue
-	private JButton setAlphabet; //Button zum setten des Alphabets
-	private Container EnDe;
-	private Container EnDeT;
-	private Container newA;
-	private Container transpositionCipher;
+	private JTextField textFieldAlphabet; //Textfeld zum Eingeben des Alphabets
+	private JTextField textFieldEnt; //Textfeld zum Eingeben des zu verschlüsselnten Texts
+	private JTextField textFieldDec; //Textfeld zum Eingeben des zu entschlüsselnten Texts
+	private JTextField textFieldShiftValue; //Textfeld zum Eingeben des ShiftValue
+	private JTextField keyWord;
 	private JTextField transC;
+	private JButton setextFieldAlphabet; //Button zum setten des Alphabets
 	private JButton UseTransC;
 	private JButton en;
 	private JButton de;
+	private JButton setShAlphabet;
+	private JButton UseKeyW;
 	private CipherModel Model;
 	private CipherPanel Panel;
 	private CipherController Controller;
-	private JButton setShAlphabet;
+	private Container EnDe;
+	private Container EnDeT;
+	private Container newA;
 	private Container SetA;
-	private Container kCipher;
-	private JTextField keyWord;
-	private JButton UseKeyW;
-	
+	private Container keywordCipher;
+	private Container transpositionCipher;
 	/**
 	 * Das ist der überladene Konstruktor
 	 * @param m Ein Objekt vom Typ CipherModel
 	 * @param c Ein Objekt vom Typ CipherController
 	 */
 	public CipherView(CipherModel m, CipherController c) {
-		this.setTitle("Cipher");
+		this.setTitle("Verschlüsselungen");
 		this.Model = m;
 		this.Controller = c;
 		this.Panel = new CipherPanel(this, this.Model);
 		this.setLayout(new GridLayout(5,2));
 		this.EnDeT = new Container();
 		this.EnDeT.setLayout(new GridLayout(2,1));
-		this.tTexten = new JTextField("entschlüsselter Text eingeben");
-		this.tTextde = new JTextField("verschlüsselter Text eingeben");
-		this.EnDeT.add(this.tTexten);
-		this.EnDeT.add(this.tTextde);
+		this.textFieldEnt = new JTextField("entschlüsselter Text eingeben");
+		this.textFieldDec = new JTextField("verschlüsselter Text eingeben");
+		this.EnDeT.add(this.textFieldEnt);
+		this.EnDeT.add(this.textFieldDec);
 		this.add(this.EnDeT);
 		this.newA = new Container();
 		this.newA.setLayout(new GridLayout(2,1));
-		this.tAlphabet = new JTextField("Alphabet eingeben");
-		this.setAlphabet = new JButton("neues Alphabet verwenden");
-		this.newA.add(this.tAlphabet);
-		this.newA.add(this.setAlphabet);
+		this.textFieldAlphabet = new JTextField("Alphabet eingeben");
+		this.setextFieldAlphabet = new JButton("neues Alphabet verwenden");
+		this.newA.add(this.textFieldAlphabet);
+		this.newA.add(this.setextFieldAlphabet);
 		this.add(newA);
 		this.add(this.Panel);
 		this.SetA = new Container();
 		this.SetA.setLayout(new GridLayout(2,1));
-		this.iShift = new JTextField("Geben Sie eine Zahl zwischen 1 und 30 ein!");
-		this.setShAlphabet = new JButton("Alphabet mit eingegebenem Wert erstellen.");
-		this.SetA.add(this.iShift);
+		this.textFieldShiftValue = new JTextField("Zahl zwischen 1 und 30 eingeben !");
+		this.setShAlphabet = new JButton("Alphabet mit eingegebener Zahl erstellen.");
+		this.SetA.add(this.textFieldShiftValue);
 		this.SetA.add(this.setShAlphabet);
 		this.add(this.SetA);
 		this.EnDe = new Container();
@@ -72,17 +71,17 @@ public class CipherView extends JFrame {
 		this.EnDe.add(this.en);
 		this.EnDe.add(this.de);
 		this.add(this.EnDe);
-		this.kCipher = new Container();
-		this.kCipher.setLayout(new GridLayout(2,1));
+		this.keywordCipher = new Container();
+		this.keywordCipher.setLayout(new GridLayout(2,1));
 		this.keyWord = new JTextField("Geben Sie ein Keyword ein!");
 		this.UseKeyW = new JButton("Alphabet mit Keyword erstellen!");
-		this.kCipher.add(this.keyWord);
-		this.kCipher.add(this.UseKeyW);
-		this.add(this.kCipher);
+		this.keywordCipher.add(this.keyWord);
+		this.keywordCipher.add(this.UseKeyW);
+		this.add(this.keywordCipher);
 		this.UseKeyW.addActionListener(this.Controller);
 		this.en.addActionListener(this.Controller);
 		this.de.addActionListener(this.Controller);
-		this.setAlphabet.addActionListener(this.Controller);
+		this.setextFieldAlphabet.addActionListener(this.Controller);
 		this.setShAlphabet.addActionListener(this.Controller);
 		this.transpositionCipher = new Container();
 		this.transpositionCipher.setLayout(new GridLayout(2,1));
@@ -101,8 +100,8 @@ public class CipherView extends JFrame {
 	 * @return Je nachdem ob Button Eventauslöser war
 	 */
 	
-	public boolean klickSA(ActionEvent e) {
-		if (e.getSource() == this.setAlphabet) return true;
+	public boolean buttonSetextFieldAlphabet(ActionEvent e) {
+		if (e.getSource() == this.setextFieldAlphabet) return true;
 		return false;
 	}
 	/**
@@ -111,7 +110,7 @@ public class CipherView extends JFrame {
 	 * @return Je nachdem ob Button Eventauslöser war
 	 */
 	
-	public boolean klickEn(ActionEvent e) {
+	public boolean buttonEncrypt(ActionEvent e) {
 		if (e.getSource() == this.en) return true;
 		return false;
 	}
@@ -120,7 +119,7 @@ public class CipherView extends JFrame {
 	 * @param e Ein Objekt vom Typ ActionEvent
 	 * @return Je nachdem ob Button Eventauslöser war
 	 */
-	public boolean klickDe(ActionEvent e) {
+	public boolean buttonDecrypt(ActionEvent e) {
 		if (e.getSource() == this.de) return true;
 		return false;
 	}
@@ -129,7 +128,7 @@ public class CipherView extends JFrame {
 	 * @param e Ein Objekt vom Typ ActionEvent
 	 * @return Je nachdem ob Button Eventauslöser war
 	 */
-	public boolean klickUKW(ActionEvent e) {
+	public boolean buttonKeyword(ActionEvent e) {
 		if (e.getSource() == this.UseKeyW) return true;
 		return false;
 	}
@@ -138,7 +137,7 @@ public class CipherView extends JFrame {
 	 * @param e Ein Objekt vom Typ ActionEvent
 	 * @return Je nachdem ob Button Eventauslöser war
 	 */
-	public boolean klickUseTransC(ActionEvent e) {
+	public boolean buttonTransposition(ActionEvent e) {
 		if (e.getSource() == this.UseTransC) return true;
 		return false;
 	}
@@ -146,7 +145,7 @@ public class CipherView extends JFrame {
 	 * Diese Methode setzt den Shift-Wert im Model.
 	 */
 	public void setWert() {
-		String s = this.iShift.getText();
+		String s = this.textFieldShiftValue.getText();
 		int i = 0;
 		try {
 			i = Integer.parseInt(s);
@@ -184,26 +183,26 @@ public class CipherView extends JFrame {
 	 * Diese Methode setzt das Text-Attribut im Model.
 	 */
 	public void setText() {
-		this.Model.setAlphabet(this.tAlphabet.getText());
+		this.Model.setextFieldAlphabet(this.textFieldAlphabet.getText());
 	}
 	/**
 	 * Diese Methode setzt das zu entschlüsselte Text-Attribut im Model.
 	 */
 	public void setDe() {
-		this.Model.setDtext(this.tTextde.getText());
+		this.Model.setdecText(this.textFieldDec.getText());
 	}
 	/**
 	 * Diese Methode setzt das zu verschlüsselte Text-Attribut im Model.
 	 */
 	public void setEn() {
-		this.Model.setentText(this.tTexten.getText());
+		this.Model.setentText(this.textFieldEnt.getText());
 	}
 	/**
 	 * Diese Methode prüft ob der betreffende Button der Eventauslöser war
 	 * @param e Ein Objekt vom Typ ActionEvent
 	 * @return Je nachdem ob Button Eventauslöser war
 	 */
-	public boolean klickShA(ActionEvent e) {
+	public boolean buttonShift(ActionEvent e) {
 		if (e.getSource() == this.setShAlphabet) return true;
 		return false;
 	}

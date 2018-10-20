@@ -8,16 +8,16 @@ import javax.swing.*;
  * @version 19-10-2018
  */
 public class CipherPanel extends JPanel{
-	private CipherModel m1;
-	private CipherView v1;
+	private CipherModel Model;
+	private CipherView View;
 	/**
 	 * Das ist ein überladener Konstruktor.
 	 * @param v Ist ein Objekt vom Typ CipherView
 	 * @param m Ist ein Objekt vom Typ CipherModel
 	 */
 	public CipherPanel (CipherView v, CipherModel m) {
-		this.m1 = m;
-		this.v1 = v;
+		this.Model = m;
+		this.View= v;
 	}
 	/**
 	 * Diese Methode initialisiert die Zeichenfläche und zeichnet Texte aus dem Model.
@@ -25,7 +25,7 @@ public class CipherPanel extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.setColor(Color.BLUE);
-		g.drawString("Verschlüsselter Text: "+"\n"+this.m1.getentText(), 5, 20);
-		g.drawString("Entschlüsselter Text: "+"\n"+this.m1.getDtext(), 5, 40);
+		g.drawString("Verschlüsselter Text: "+"\n"+this.Model.getentText(), 5, 20);
+		g.drawString("Entschlüsselter Text: "+"\n"+this.Model.getdecText(), 5, 40);
 	}
 }
